@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remembering Our Love</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQktH0fnmuq9XL5CzHLdj9D6OEkh4TL4ab-fzVAc-rZkg&s');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000;
+        }
+        .timer {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .media-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .media-item img, .media-item video {
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<audio autoplay loop>
+    <source src="assets/music.mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+    <h1 class="title">Remembering Our Love</h1>
+    <div class="timer">
+        <p>Đã yêu nhau được <span id="daysCounter">0</span> ngày</p>
+        <p>Thời gian hiện tại: <span id="timeCounter">00:00:00</span></p>
+    </div>
+    <div class="media-gallery">
+        <div class="media-item">
+            <img src="assets/images/image1.jpg" alt="Kỷ niệm 1">
+            <p>Kỷ niệm 1</p>
+        </div>
+        <div class="media-item">
+            <video controls>
+                <source src="assets/videos/video1.mp4" type="video/mp4">
+                Video không hỗ trợ.
+            </video>
+            <p>Kỷ niệm 2</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const startDate = new Date("2023-05-08"); // Ngày bắt đầu yêu nhau (có thể thay đổi)
+
+    function updateTime() {
+        const now = new Date();
+        const diffTime = now - startDate;
+        const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        document.getElementById("daysCounter").textContent = days;
+
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+
+        document.getElementById("timeCounter").textContent =
+            String(hours).padStart(2, '0') + ":" +
+            String(minutes).padStart(2, '0') + ":" +
+            String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updateTime, 1000);
+</script>
+
+</body>
+</html>
